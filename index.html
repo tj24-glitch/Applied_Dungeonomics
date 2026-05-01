@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Applied Dungeonomics</title>
+
+  <!-- D3 -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Crimson+Text:ital@0;1&family=Inter:wght@400;600&display=swap"
+  >
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+
+  <!-- Parchment Intro -->
+  <section class="parchment-intro">
+    <h1>Applied Dungeonomics</h1>
+
+    <p>
+      I used to believe Dungeon Mastering was about storytelling, collaboration,
+      and carefully weaving player backstories into a cohesive narrative.
+    </p>
+
+    <p>
+      Then I ran multiple campaigns where the rogue committed arson “for efficiency,”
+      the bard attempted diplomacy using vibes, eye contact, and lies,
+      and the barbarian said <em>“I throw the halfling. He consented. Emotionally.”</em>
+    </p>
+
+    <p>
+      <strong>Applied Dungeonomics</strong> is what happens when a Dungeon Master
+      stops asking <em>why</em> the party did something
+      and starts asking <em>how often</em> it keeps happening.
+      This is a statistically grounded, emotionally compromised attempt
+      to quantify player behavior, narrative instability,
+      and the exact moment a campaign leaves the rails and goes into the woods - because it was somehow convinced it was a tree.
+    </p>
+
+    <p>
+      These charts are not judgments.
+      They are documentation for the inevitable tribunal.
+    </p>
+  </section>
+
+  <!-- Index Buttons -->
+  <div id="controls"></div>
+
+  <!-- Visualization -->
+  <div id="distribution-view"></div>
+
+  <!-- Instructions -->
+  <section class="parchment-instructions">
+    <h2>How to Use This (Please Read Before Drawing Conclusions)</h2>
+
+    <p>
+      This visualization is designed to be explored one index at a time.
+      Each index represents a specific, extremely common D&amp;D scenario
+      that has historically ended badly for someone.
+    </p>
+
+    <ul>
+      <li>
+        <strong>Select an index</strong> using the buttons at the top to choose
+        which scenario you are investigating.
+      </li>
+      <li>
+        <strong>The chart</strong> shows how characters actually distribute across
+        outcome tiers for that scenario.
+        The background colors are interpretation bands - not all scores mean the same thing.
+      </li>
+      <li>
+        <strong>Click a band or its legend entry</strong> to see which
+        race + class combinations most commonly appear in that outcome tier.
+      </li>
+      <li>
+        If a race or class is missing or unknown, <strong>hover over it</strong>
+        to view the associated field report explaining why the data could not be recovered.
+      </li>
+    </ul>
+
+    <p>
+      A final note: rare outcomes are rare on purpose.
+      If you encounter a character in the extreme upper ranges,
+      please remain calm and notify your Dungeon Master.
+    </p>
+
+    <p>
+        <em><strong> Dedicated to my brother</strong>, our long‑suffering DM, who survived campaign prep, player chaos, 
+        and irreversible psychic damage from the words “can I do something weird?”</em>
+    </p>
+  </section>
+
+  <!-- App Entry -->
+  <script type="module" src="main.js"></script>
+
+</body>
+</html>
