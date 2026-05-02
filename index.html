@@ -2,105 +2,423 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Applied Dungeonomics</title>
+  <title>Applied Dungeonomics — Final Project</title>
 
-  <!-- D3 -->
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-
-  <!-- Google Fonts -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Crimson+Text:ital@0;1&family=Inter:wght@400;600&display=swap"
-  >
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Crimson+Text&family=Inter&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="home.css">
 </head>
 
 <body>
 
-  <!-- Parchment Intro -->
-  <section class="parchment-intro">
-    <h1>Applied Dungeonomics</h1>
+<!-- COVER -->
+<section class="parchment-intro">
+  <h1>Applied Dungeonomics</h1>
+  <h2>
+    <span class="subtitle">A Quantitative Field Study of Chaos, Survival, and Poor Party Decisions</span>
+  </h2>
 
+  <p>
+    <strong>Author:</strong> Tiffanie Johnson<br>
+    <strong>Course:</strong> SP26‑IN‑NEWM‑N328‑23489<br>
+    <strong>FINAL PROJECT</strong>
+  </p>
+
+  <p>
+    Applied Dungeonomics is a data‑driven analysis of <em>Dungeons &amp; Dragons 5e</em>
+    character data that treats adventuring not as heroic fantasy,
+    but as a series of statistically questionable decisions.
+  </p>
+
+  <p>
+    The project applies statistical normalization and index construction
+    to model survivability, decision‑making, and narrative disruption.
+    Each index is grounded in raw character attributes and standardized
+    against absolute theoretical maxima.
+  </p>
+
+  <p>
+    Humor is used as framing, not as a substitute for rigor.
+    The presentation may be playful, but the methodology is sincere,
+    transparent, and reproducible.
+  </p>
+</section>
+
+<!-- NAV -->
+<section class="home-links">
+  <a class="home-card" href="./Applied_Dungeonomics/app/">
+    <h3>Enter the Visualization</h3>
     <p>
-      I used to believe Dungeon Mastering was about storytelling, collaboration,
-      and carefully weaving player backstories into a cohesive narrative.
+      An interactive exploration of scenario‑based indexes showing how
+      different race and class combinations tend to survive, panic,
+      negotiate, sneak, or cause problems.
     </p>
+  </a>
 
+  <a class="home-card" href="./dataset.html">
+    <h3>View the Dataset</h3>
     <p>
-      Then I ran multiple campaigns where the rogue committed arson “for efficiency,”
-      the bard attempted diplomacy using vibes, eye contact, and lies,
-      and the barbarian said <em>“I throw the halfling. He consented. Emotionally.”</em>
+      The cleaned CSV used for all calculations, including raw attributes,
+      normalized variables, and alignment mappings.
+      No spell components required.
     </p>
+  </a>
+</section>
 
-    <p>
-      <strong>Applied Dungeonomics</strong> is what happens when a Dungeon Master
-      stops asking <em>why</em> the party did something
-      and starts asking <em>how often</em> it keeps happening.
-      This is a statistically grounded, emotionally compromised attempt
-      to quantify player behavior, narrative instability,
-      and the exact moment a campaign leaves the rails and goes into the woods - because it was somehow convinced it was a tree.
-    </p>
+<!-- METHOD -->
+<section class="parchment-instructions">
+  <h2>Methodology Overview</h2>
 
-    <p>
-      These charts are not judgments.
-      They are documentation for the inevitable tribunal.
-    </p>
-  </section>
+  <p>
+    This project uses raw D&amp;D character statistics (not modifiers) and
+    normalizes them into comparable 0–1 ranges. Indexes are then constructed
+    using weighted combinations of these normalized variables.
+  </p>
 
-  <!-- Index Buttons -->
-  <div id="controls"></div>
+  <h3>Data Cleaning</h3>
+  <ul>
+    <li>Multiclassing removed; base class retained</li>
+    <li>HP capped at 500</li>
+    <li>Levels capped at 20</li>
+    <li>AC capped at 35</li>
+    <li>Ability scores capped at 30</li>
+    <li>Out‑of‑range values recoded as N/A</li>
+  </ul>
+</section>
 
-  <!-- Visualization -->
-  <div id="distribution-view"></div>
+<!-- NORMALIZATION -->
+<section class="parchment-instructions">
+  <h2>Normalization Standards</h2>
 
-  <!-- Instructions -->
-  <section class="parchment-instructions">
-    <h2>How to Use This (Please Read Before Drawing Conclusions)</h2>
+  <table>
+    <tr><th>Metric</th><th>Maximum Value</th></tr>
+    <tr><td>STR/DEX/CON/INT/WIS/CHA</td><td>30</td></tr>
+    <tr><td>HP</td><td>500</td></tr>
+    <tr><td>AC</td><td>35</td></tr>
+    <tr><td>Level</td><td>20</td></tr>
+  </table>
 
-    <p>
-      This visualization is designed to be explored one index at a time.
-      Each index represents a specific, extremely common D&amp;D scenario
-      that has historically ended badly for someone.
-    </p>
+  <p>
+    These values define normalization boundaries only and do not reflect typical
+    gameplay.
+  </p>
+</section>
 
-    <ul>
-      <li>
-        <strong>Select an index</strong> using the buttons at the top to choose
-        which scenario you are investigating.
-      </li>
-      <li>
-        <strong>The chart</strong> shows how characters actually distribute across
-        outcome tiers for that scenario.
-        The background colors are interpretation bands - not all scores mean the same thing.
-      </li>
-      <li>
-        <strong>Click a band or its legend entry</strong> to see which
-        race + class combinations most commonly appear in that outcome tier.
-      </li>
-      <li>
-        If a race or class is missing or unknown, <strong>hover over it</strong>
-        to view the associated field report explaining why the data could not be recovered.
-      </li>
-    </ul>
+<!-- ALIGNMENT -->
+<section class="parchment-instructions">
+  <h2>Alignment Chaos Coefficient (ACC)</h2>
 
-    <p>
-      A final note: rare outcomes are rare on purpose.
-      If you encounter a character in the extreme upper ranges,
-      please remain calm and notify your Dungeon Master.
-    </p>
+  <p>
+    In order to model unpredictability and narrative instability,
+    character alignment is converted into a numeric
+    <strong>Alignment Chaos Coefficient (ACC)</strong>.
+    This coefficient represents how likely a character is to act
+    impulsively, escalate situations, or derail carefully laid plans.
+  </p>
 
-    <p>
-        <em><strong> Dedicated to my brother</strong>, our long‑suffering DM, who survived campaign prep, player chaos, 
-        and irreversible psychic damage from the words “can I do something weird?”</em>
-    </p>
-  </section>
+  <p>
+    Lower ACC values correspond to consistency, restraint,
+    and predictable decision‑making.
+    Higher ACC values increase volatility, risk,
+    and overall meme density.
+  </p>
 
-  <!-- App Entry -->
-  <script type="module" src="main.js"></script>
+  <table>
+    <tr>
+      <th>Alignment</th>
+      <th>Abbreviation</th>
+      <th>Chaos Coefficient (ACC)</th>
+    </tr>
+    <tr>
+      <td>Lawful Good</td>
+      <td>LG</td>
+      <td>0.05</td>
+    </tr>
+    <tr>
+      <td>Lawful Neutral</td>
+      <td>LN</td>
+      <td>0.10</td>
+    </tr>
+    <tr>
+      <td>Lawful Evil</td>
+      <td>LE</td>
+      <td>0.15</td>
+    </tr>
+    <tr>
+      <td>Neutral Good</td>
+      <td>NG</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <td>True Neutral</td>
+      <td>NN</td>
+      <td>0.40</td>
+    </tr>
+    <tr>
+      <td>Neutral Evil</td>
+      <td>NE</td>
+      <td>0.55</td>
+    </tr>
+    <tr>
+      <td>Chaotic Good</td>
+      <td>CG</td>
+      <td>0.70</td>
+    </tr>
+    <tr>
+      <td>Chaotic Neutral</td>
+      <td>CN</td>
+      <td>0.85</td>
+    </tr>
+    <tr>
+      <td>Chaotic Evil</td>
+      <td>CE</td>
+      <td>1.00</td>
+    </tr>
+  </table>
+
+  <p>
+    The ACC is incorporated into multiple indexes either as a
+    direct risk amplifier (<code>ACC</code>) or, in situations where
+    restraint is beneficial, as an inverse modifier (<code>1 − ACC</code>).
+  </p>
+</section>
+
+<section class="parchment-instructions">
+  <h2>Tavern Brawl Survival Index (TBSI)</h2>
+
+  <p>
+    The Tavern Brawl Survival Index (TBSI) estimates how likely a character is
+    to remain standing during a sudden, chaotic physical altercation in an
+    uncontrolled environment (e.g., a tavern).
+  </p>
+
+  <p>
+    This index emphasizes raw physical durability and endurance, with a smaller
+    contribution from charisma (instigation) and alignment‑based chaos.
+  </p>
+
+  <p>
+    <strong>Formula:</strong><br>
+    30·STRn + 30·CONn + 20·HPn + 10·CHAn + 10·ACC
+  </p>
+
+  <h3>Score Interpretation</h3>
+  <ul>
+    <li><strong>0–19:</strong> Thought It Was Performance Art</li>
+    <li><strong>20–34:</strong> Wrong Bar</li>
+    <li><strong>35–49:</strong> Leaves Early</li>
+    <li><strong>50–64:</strong> Finishes the Fight</li>
+    <li><strong>65–74:</strong> Banned From Three Taverns</li>
+    <li><strong>75–85:</strong> Started the Bar Fight</li>
+    <li><strong>86–100:</strong> Legendary Yelp Review</li>
+  </ul>
+</section>
+
+<section class="parchment-instructions">
+  <h2>Dragon Encounter Panic Index (DEPI)</h2>
+
+  <p>
+    The Dragon Encounter Panic Index (DEPI) measures a character’s ability
+    to correctly assess danger and act strategically during a dragon encounter.
+    Higher scores indicate stronger survival instincts.
+  </p>
+
+  <p>
+    Wisdom and intelligence dominate this index, supported by dexterity,
+    experience level, and emotional restraint (inversely related to chaos).
+  </p>
+
+  <p>
+    <strong>Formula:</strong><br>
+    30·WISn + 25·INTn + 20·DEXn + 15·LVLn + 10·(1 − ACC)
+  </p>
+
+  <h3>Score Interpretation</h3>
+  <ul>
+    <li><strong>0–19:</strong> What’s a Dragon?</li>
+    <li><strong>20–34:</strong> Bold Plan, Bad Math</li>
+    <li><strong>35–49:</strong> Maybe This’ll Work?</li>
+    <li><strong>50–64:</strong> Retreat With Dignity</li>
+    <li><strong>65–74:</strong> Didn’t Pack Light</li>
+    <li><strong>75–85:</strong> Never Seen Again</li>
+    <li><strong>86–100:</strong> Dragon Checks for You</li>
+  </ul>
+</section>
+
+<section class="parchment-instructions">
+  <h2>Dungeon Trap Survival Rating (DTSR)</h2>
+
+  <p>
+    The Dungeon Trap Survival Rating (DTSR) evaluates how effectively a character
+    can detect, avoid, and survive traps in dungeon environments.
+  </p>
+
+  <p>
+    This index prioritizes perception and dexterity, with secondary contributions
+    from intelligence, armor, and overall durability.
+  </p>
+
+  <p>
+    <strong>Formula:</strong><br>
+    35·WISn + 25·DEXn + 20·INTn + 10·ACn + 10·HPn
+  </p>
+
+  <h3>Score Interpretation</h3>
+  <ul>
+    <li><strong>0–19:</strong> It Was the Floor</li>
+    <li><strong>20–34:</strong> Learns the Hard Way</li>
+    <li><strong>35–49:</strong> Cautiously Optimistic</li>
+    <li><strong>50–64:</strong> Checks Sometimes</li>
+    <li><strong>65–74:</strong> Paranoid for a Reason</li>
+    <li><strong>75–85:</strong> Has a Ten‑Foot Pole</li>
+    <li><strong>86–100:</strong> Retired Rogue Trainer</li>
+  </ul>
+</section>
+
+<section class="parchment-instructions">
+  <h2>Royal Audience Disaster Index (RADI)</h2>
+
+  <p>
+    The Royal Audience Disaster Index (RADI) estimates how likely a character
+    (or party spokesperson) is to successfully navigate high‑stakes political
+    encounters without triggering punishment or execution.
+  </p>
+
+  <p>
+    Charisma and wisdom are key, moderated by intelligence, experience,
+    and emotional restraint.
+  </p>
+
+  <p>
+    <strong>Formula:</strong><br>
+    35·CHAn + 25·WISn + 20·INTn + 10·LVLn + 10·(1 − ACC)
+  </p>
+
+  <h3>Score Interpretation</h3>
+  <ul>
+    <li><strong>0–19:</strong> Arrested Mid‑Sentence</li>
+    <li><strong>20–34:</strong> Diplomatic Incident</li>
+    <li><strong>35–49:</strong> The King Is Tired</li>
+    <li><strong>50–64:</strong> Saved the Meeting</li>
+    <li><strong>65–74:</strong> Invited Back</li>
+    <li><strong>75–85:</strong> Turned It Around</li>
+    <li><strong>86–100:</strong> Married into Nobility</li>
+  </ul>
+</section>
+
+<section class="parchment-instructions">
+  <h2>Stealth Mission Failure Index (SMFI)</h2>
+
+  <p>
+    The Stealth Mission Failure Index (SMFI) measures how effectively a character
+    can participate in a coordinated stealth operation without compromising the
+    group’s concealment.
+  </p>
+
+  <p>
+    This index emphasizes dexterity and situational awareness, moderated by armor,
+    experience, and emotional restraint. Higher scores indicate a greater ability
+    to remain undetected.
+  </p>
+
+  <p>
+    <strong>Formula:</strong><br>
+    40·DEXn + 20·WISn + 15·(1 − ACC) + 15·ACn + 10·LVLn
+  </p>
+
+  <h3>Score Interpretation</h3>
+  <ul>
+    <li><strong>0–19:</strong> Roll Initiative</li>
+    <li><strong>20–34:</strong> Someone Sneezed</li>
+    <li><strong>35–49:</strong> Armor Makes Noise</li>
+    <li><strong>50–64:</strong> Actually Sneaky</li>
+    <li><strong>65–74:</strong> Wasn’t There</li>
+    <li><strong>75–85:</strong> DM Forgot You</li>
+    <li><strong>86–100:</strong> Invisible to Math</li>
+  </ul>
+</section>
+
+<section class="parchment-instructions">
+  <h2>Party Liability Index (PLI)</h2>
+
+  <p>
+    The Party Liability Index (PLI) measures how likely a character is to create
+    complications, conflicts, or unintended consequences for their party.
+  </p>
+
+  <p>
+    This index emphasizes charisma, chaos, poor judgment, and brute force.
+  </p>
+
+  <p>
+    <strong>Formula:</strong><br>
+    35·CHAn + 25·ACC + 20·(1 − WISn) + 20·STRn
+  </p>
+
+  <h3>Score Interpretation</h3>
+  <ul>
+    <li><strong>0–49:</strong> Manageable</li>
+    <li><strong>50–64:</strong> Noticeable Danger</li>
+    <li><strong>65–74:</strong> Please Stop Them</li>
+    <li><strong>75–100:</strong> Campaign‑Defining Menace</li>
+  </ul>
+</section>
+
+<section class="parchment-instructions">
+  <h2>DM Blood Pressure Index (DBPI)</h2>
+
+  <p>
+    The DM Blood Pressure Index (DBPI) estimates the degree of stress a character
+    induces at the game table through unpredictability, rule bending,
+    and narrative gravity.
+  </p>
+
+  <p>
+    This index combines alignment‑based chaos, charisma, experience,
+    and questionable judgment.
+  </p>
+
+  <p>
+    <strong>Formula:</strong><br>
+    30·ACC + 25·CHAn + 20·LVLn + 15·(1 − WISn) + 10·INTn
+  </p>
+
+  <h3>Score Interpretation</h3>
+  <ul>
+    <li><strong>0–49:</strong> Calm Table</li>
+    <li><strong>50–64:</strong> DM Bracing</li>
+    <li><strong>65–74:</strong> Rules‑Lawyer Aura</li>
+    <li><strong>75–100:</strong> Entire Arc Revolves Around You</li>
+  </ul>
+</section>
+
+<section class="parchment-instructions">
+  <h2>Sources</h2>
+
+  <p>
+    Kaggle. (n.d.). <em>D&amp;D character database</em>.
+    <a
+      href="https://www.kaggle.com/datasets/mexwell/dnd-character-database?resource=download"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      https://www.kaggle.com/datasets/mexwell/dnd-character-database
+    </a>
+  </p>
+
+  <p>
+    Wizards of the Coast. (2014).
+    <em>Player’s Handbook</em> (5th ed.).
+  </p>
+
+  <p>
+    Wizards of the Coast. (2014).
+    <em>Dungeon Master’s Guide</em> (5th ed.).
+  </p>
+</section>
 
 </body>
 </html>

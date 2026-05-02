@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Applied Dungeonomics — Dataset</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Crimson+Text&family=Inter&display=swap" rel="stylesheet">
+
+  <!-- Reuse home styling -->
+  <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+
+  <!-- Back to Home -->
+  <a href="./index.html" class="back-home">← Home</a>
+
+  <!-- Intro -->
+  <section class="parchment-intro">
+    <h1>Applied Dungeonomics Dataset</h1>
+
+    <p>
+      This dataset contains the cleaned and normalized character data used to
+      calculate all indexes presented in the
+      <em>Applied Dungeonomics</em> visualization.
+    </p>
+
+    <p>
+      All values are derived directly from raw character‑sheet attributes and
+      standardized against absolute theoretical maxima for cross‑character
+      comparability.
+    </p>
+
+    <p>
+      This dataset is intended for exploratory analysis, index replication,
+      and independent inspection in spreadsheet or statistical software.
+    </p>
+  </section>
+
+  <!-- Download -->
+  <section class="parchment-instructions" style="text-align: center;">
+    <h2>Download the Data</h2>
+
+    <p>
+      The full dataset is provided as a single CSV file containing raw
+      attributes, normalized variables, alignment mappings,
+      and computed index values.
+    </p>
+
+    <a
+      href="./Applied_Dungeonomics/app/data/dnd_character_dataset_cleaned.csv"
+      class="home-card"
+      style="
+        display: inline-block;
+        max-width: none;
+        margin-top: 12px;
+        padding: 16px 28px;
+        font-size: 1.1rem;
+      "
+      download
+    >
+      ⬇ Download CSV (Raw Dataset)
+    </a>
+
+    <p style="margin-top: 16px; font-style: italic;">
+      No spell components required.
+    </p>
+  </section>
+
+  <!-- Field summary -->
+  <section class="parchment-instructions">
+    <h2>Included Fields</h2>
+
+    <ul>
+      <li>Race</li>
+      <li>Class (base class only)</li>
+      <li>Level</li>
+      <li>STR, DEX, CON, INT, WIS, CHA</li>
+      <li>HP, AC</li>
+      <li>Alignment (processed)</li>
+      <li>Normalized variables</li>
+      <li>Computed index values</li>
+    </ul>
+  </section>
+
+</body>
+</html>
