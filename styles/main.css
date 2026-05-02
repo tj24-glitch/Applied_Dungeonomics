@@ -261,3 +261,11 @@ svg {
   margin-bottom: 8px;
   color: #3b2f1b;
 }
+
+/* ===== SAFE APP ALIGNMENT FIX ===== */
+
+.app-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px 48px;
+}
