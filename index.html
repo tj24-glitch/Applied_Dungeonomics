@@ -395,6 +395,131 @@
   </ul>
 </section>
 
+<!-- DESIGN JUSTIFICATION & ITERATIVE DEVELOPMENT -->
+<section class="parchment-instructions">
+
+  <h2>Design Justification & Iterative Development</h2>
+
+  <h3 class="editor-note">
+    Editor’s Note — This section was added 03‑May‑2026
+  </h3>
+
+  <p>
+    The Applied Dungeonomics visualization was developed through a series of
+    deliberate design iterations. Each iteration responded to conceptual,
+    analytical, or usability challenges identified during development, resulting
+    in a visualization that balances statistical rigor with narrative clarity
+    and audience‑specific framing.
+  </p>
+
+  <h3>Initial Concept and Sketch</h3>
+
+  <p>
+    The initial concept focused on visualizing how characters distribute across
+    each custom index. Many layout, hierarchy, and visual encoding options were 
+    considered, ultimately landing on a bar chart as the initial sketch shows below.
+  </p>
+
+  <p>
+    Bar charts were selected for their effectiveness in communicating discrete
+    frequency distributions and enabling comparison across constructed indexes.
+    This decision prioritized interpretability and analytical clarity over visual
+    novelty.
+  </p>
+
+ <figure class="design-figure">
+  <img src="./images/initial-design.jpg"
+       alt="Initial design sketch for Applied Dungeonomics visualization">
+  <figcaption>
+    Initial design sketch illustrating the bar‑chart‑based layout.
+  </figcaption>
+</figure>
+
+  <h3>Iteration One: Functional Baseline</h3>
+
+  <p>
+    The first implemented iteration established a functional baseline. Each index
+    was visualized using a bar chart displaying the number of characters falling
+    within predefined score ranges.
+  </p>
+
+  <p>
+    Score ranges were intentionally uneven. Anticipating a bell‑curve‑like
+    distribution, extreme values were grouped into broader bins, while mid‑range
+    values were allocated narrower ranges. This minimized visual distortion from
+    sparsely populated extremes while preserving meaningful variation within the
+    most common scores.
+  </p>
+
+  <p>
+    This iteration also introduced identification of the top three race and class
+    combinations appearing within each score range, allowing users to associate
+    numeric distributions with concrete character archetypes.
+  </p>
+
+  <h3>Iteration Two: Thematic Language and Audience Alignment</h3>
+
+  <p>
+    After achieving functional correctness, the second iteration focused on
+    aligning presentation with the Dungeons &amp; Dragons domain. Formal,
+    abstract descriptions were replaced with themed and humorous language more
+    appropriate for a D&amp;D‑literate audience.
+  </p>
+
+  <p>
+    Each index was reframed using a familiar gameplay scenario, while score
+    ranges were given narrative labels that conveyed meaning without requiring
+    detailed statistical interpretation. This reframing improved accessibility
+    while preserving analytical intent.
+  </p>
+
+  <h3>Iteration Three: Sparse and Missing Data Handling</h3>
+
+  <p>
+    Further evaluation revealed that some score ranges lacked sufficient data to
+    meaningfully identify dominant race‑class combinations. Rather than omitting
+    these cases or presenting misleading summaries, they were explicitly marked
+    with themed explanatory notes.
+  </p>
+
+  <p>
+    Additionally, missing race or class values within the dataset were identified.
+    Instead of displaying null values, these entries were replaced with themed
+    “unknown” labels tailored to each index’s narrative context. This ensured
+    transparency while maintaining visual and tonal consistency.
+  </p>
+
+  <h3>Iteration Four: Tooltip‑Based Explanatory Support</h3>
+
+  <p>
+    To avoid overloading the interface with explanatory text, the fourth
+    iteration introduced a tooltip. This tooltip appears when hovering over
+    missing or ambiguous data labels. It provides a short, humorous explanation 
+    indicating that data was unavailable or undefined, with wording customized to 
+    match the theme of each index. This approach preserved interface cleanliness 
+    while supporting deeper interpretation.
+  </p>
+
+  <h3>Iteration Five: Visual Refinement and Layout Design</h3>
+
+  <p>
+    The final iteration focused on aesthetic refinement and overall layout
+    cohesion. Bar colors were kept black to maximize contrast and readability,
+    while accent colors were selected per index to enhance differentiation
+    without overwhelming the visualization.
+  </p>
+
+  <p>
+    The page layout was redesigned to resemble a Dungeons &amp; Dragons character
+    sheet or campaign notebook. A parchment‑styled background reinforces the
+    thematic framing, while introductory text and instructions are presented in
+    the voice of a slightly unhinged Dungeon Master, setting tone and guiding
+    user interaction.
+  </p>
+
+</section>
+
+
 <section class="parchment-instructions">
   <h2>Project Walkthrough</h2>
 

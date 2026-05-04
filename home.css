@@ -303,3 +303,28 @@ tr:last-child td {
   width: 100%;
   height: 100%;
 }
+
+/* Design Justification Image Handling */
+.design-figure {
+  max-width: 100%;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.design-figure img {
+  max-width: 90%;        /* keeps it inside parchment */
+  height: auto;          /* maintains aspect ratio */
+  display: block;
+  margin: 0 auto;
+  border: 2px solid #3b2f1c;
+  background-color: #f5ecd6;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.design-figure figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #3b2f1c;
+  opacity: 0.85;
+}
